@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarah Louise Fitness</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -162,8 +164,11 @@
     © 2026 Sarah Louise Fitness. All rights reserved.
   </footer>
 
-  <!-- Quiz Logic Script -->
+  <!-- Quiz & Form Submission Script -->
   <script>
+    // Web App URL for Google Apps Script
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwquDcebN0xViAMcr1IstGOc2b_bfASKRZHcHy2o0ImyF-PsbiqDG8_-cXZRTmxzf4v/exec';
+
     let currentQuestion = 0;
     let userAnswers = [];
 
@@ -276,10 +281,11 @@
       }
     };
 
-    function handleLeadSubmit(e) {
+    // Standard HTTP fetch submission replacing google.script.run
+    async function handleLeadSubmit(e) {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
-      btn.innerText = "Saving...";
+      btn.innerText = "SAVING...";
       btn.disabled = true;
 
       const formData = {
@@ -287,19 +293,27 @@
         email: document.getElementById('email').value
       };
 
-      google.script.run
-        .withSuccessHandler(function(response) {
-          if (response.status === 'success') {
-            document.getElementById('lead-view').classList.add('hidden');
-            document.getElementById('quiz-view').classList.remove('hidden');
-            loadQuestion();
-          } else {
-            alert('Error saving: ' + response.message);
-            btn.innerText = "Get My Free Guide Now";
-            btn.disabled = false;
-          }
-        })
-        .processLead(formData);
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Bypasses browser CORS preflight restrictions
+          headers: {
+            'Content-Type': 'text/plain'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        // Hide Lead Form & Reveal Quiz
+        document.getElementById('lead-view').classList.add('hidden');
+        document.getElementById('quiz-view').classList.remove('hidden');
+        loadQuestion();
+
+      } catch (error) {
+        console.error("Submission error:", error);
+        alert('There was a problem submitting your details. Please try again!');
+        btn.innerText = "Get My Free Guide Now";
+        btn.disabled = false;
+      }
     }
 
     function loadQuestion() {
@@ -317,7 +331,6 @@
         optionsContainer.appendChild(btn);
       });
 
-      // Update progress bar
       const progressPercent = ((currentQuestion + 1) / questions.length) * 100;
       document.getElementById('progress-bar').style.width = `${progressPercent}%`;
     }
@@ -337,7 +350,6 @@
       document.getElementById('quiz-view').classList.add('hidden');
       document.getElementById('result-view').classList.remove('hidden');
 
-      // Simple mapping logic based on answers
       let resultKey = 'busy';
       const firstAnswer = userAnswers[0];
       
