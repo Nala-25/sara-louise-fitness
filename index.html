@@ -96,14 +96,31 @@
           </p>
         </div>
 
-        <!-- Right Column: Hero Image Container (Model only with #fefdfd background) -->
+        <!-- Right Column: Hero Image Container with Floating Badges & Glow -->
         <div class="flex justify-center items-center">
-          <div class="relative w-full max-w-md lg:max-w-full bg-[#fefdfd] p-4 sm:p-6 rounded-3xl shadow-2xl border border-[#8f7478]/30">
+          <div class="relative w-full max-w-md lg:max-w-full bg-[#fefdfd] p-4 sm:p-6 rounded-3xl shadow-2xl border border-[#8f7478]/30 overflow-visible">
+            
+            <!-- Background Accent Glow inside the Card -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-[#d2858c]/15 via-transparent to-[#8f7478]/10 rounded-3xl pointer-events-none"></div>
+
+            <!-- Floating Rating Badge (Top Left) -->
+            <div class="absolute -top-3 -left-2 sm:-top-4 sm:-left-3 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-lg border border-[#8f7478]/20 flex items-center gap-2 z-10">
+              <span class="text-xs">⭐⭐⭐⭐⭐</span>
+              <span class="text-[11px] font-bold text-[#272626]">4.9/5 (1,200+ Results)</span>
+            </div>
+
+            <!-- Main Model Image -->
             <img 
               src="https://lh3.googleusercontent.com/d/1YZxfu2vB7bf-f4uSABmwDYcJJQS87HAA" 
               alt="Sarah Louise Fitness Program Preview" 
               class="relative w-full h-auto object-cover rounded-2xl" 
             />
+
+            <!-- Floating Benefit Badge (Bottom Right) -->
+            <div class="absolute -bottom-3 -right-2 sm:-bottom-4 sm:-right-3 bg-[#272626] text-white px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2 text-xs font-bold z-10 border border-white/20">
+              <span>💪</span> <span>100% Home Workouts</span>
+            </div>
+
           </div>
         </div>
 
