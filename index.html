@@ -9,7 +9,7 @@
   <style>
     body { 
       font-family: 'Poppins', sans-serif; 
-      background-color: #fefdfd;
+      background-color: #caaeb1;
     }
     .quiz-option {
       transition: all 0.2s ease-in-out;
@@ -21,10 +21,10 @@
     }
   </style>
 </head>
-<body class="text-[#272626] min-h-screen flex flex-col justify-between antialiased selection:bg-[#d2858c] selection:text-white">
+<body class="text-[#272626] min-h-screen flex flex-col justify-between antialiased selection:bg-[#d2858c] selection:text-white bg-[#caaeb1]">
 
-  <!-- Header with Brand Logo -->
-  <header class="py-5 px-6 text-center border-b border-[#8f7478]/15 bg-[#fefdfd] sticky top-0 z-50 backdrop-blur-md bg-white/80">
+  <!-- Header with Brand Logo (Relative position prevents header scroll freezing) -->
+  <header class="py-5 px-6 text-center border-b border-[#8f7478]/15 bg-[#fefdfd] relative z-10">
     <div class="flex flex-col items-center justify-center max-w-xl mx-auto">
       <img 
         src="https://lh3.googleusercontent.com/d/15VIHy6EnrPGrt61dwak1kspj_KOhkhwg" 
@@ -34,8 +34,8 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT WRAPPER -->
-  <main class="bg-gradient-to-b from-gray-50 to-gray-100 flex-1 flex flex-col justify-center py-8">
+  <!-- MAIN CONTENT WRAPPER (Updated background color to #caaeb1) -->
+  <main class="bg-[#caaeb1] flex-1 flex flex-col justify-center py-8">
 
     <!-- STEP 1: LANDING PAGE LEAD FORM -->
     <div id="lead-view" class="max-w-6xl mx-auto px-6 py-8 my-auto w-full transition-all duration-500">
