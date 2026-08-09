@@ -23,7 +23,7 @@
 </head>
 <body class="text-[#272626] min-h-screen flex flex-col justify-between antialiased selection:bg-[#d2858c] selection:text-white bg-[#caaeb1]">
 
-  <!-- Header with Brand Logo (Relative position prevents header scroll freezing) -->
+  <!-- Header with Brand Logo -->
   <header class="py-5 px-6 text-center border-b border-[#8f7478]/15 bg-[#fefdfd] relative z-10">
     <div class="flex flex-col items-center justify-center max-w-xl mx-auto">
       <img 
@@ -34,7 +34,7 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT WRAPPER (Updated background color to #caaeb1) -->
+  <!-- MAIN CONTENT WRAPPER -->
   <main class="bg-[#caaeb1] flex-1 flex flex-col justify-center py-8">
 
     <!-- STEP 1: LANDING PAGE LEAD FORM -->
@@ -96,14 +96,13 @@
           </p>
         </div>
 
-        <!-- Right Column: Hero Image -->
+        <!-- Right Column: Hero Image Container (Model only with #fefdfd background) -->
         <div class="flex justify-center items-center">
-          <div class="relative w-full max-w-md lg:max-w-full">
-            <div class="absolute -inset-1 bg-gradient-to-r from-[#d2858c] to-[#8f7478] rounded-3xl blur opacity-25"></div>
+          <div class="relative w-full max-w-md lg:max-w-full bg-[#fefdfd] p-4 sm:p-6 rounded-3xl shadow-2xl border border-[#8f7478]/30">
             <img 
               src="https://lh3.googleusercontent.com/d/1YZxfu2vB7bf-f4uSABmwDYcJJQS87HAA" 
               alt="Sarah Louise Fitness Program Preview" 
-              class="relative w-full h-auto object-cover rounded-3xl shadow-2xl border border-[#8f7478]/30"
+              class="relative w-full h-auto object-cover rounded-2xl" 
             />
           </div>
         </div>
