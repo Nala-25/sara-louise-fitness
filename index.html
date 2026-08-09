@@ -98,7 +98,6 @@
 
         <!-- Right Column: Hero Image Container with Floating Badges & Glow -->
         <div class="flex justify-center items-center py-4 sm:py-6">
-          <!-- Outer Wrapper with padding so floating negative badges stay visible -->
           <div class="relative w-full max-w-md lg:max-w-full m-2 sm:m-4">
             
             <!-- Floating Rating Badge (Top Left) -->
@@ -109,7 +108,6 @@
 
             <!-- Main Card Container -->
             <div class="relative bg-[#fefdfd] p-4 sm:p-6 rounded-3xl shadow-2xl border border-[#8f7478]/30 overflow-hidden">
-              <!-- Background Accent Glow inside the Card -->
               <div class="absolute inset-0 bg-gradient-to-tr from-[#d2858c]/20 via-transparent to-[#8f7478]/15 rounded-3xl pointer-events-none"></div>
 
               <!-- Main Model Image -->
@@ -133,14 +131,11 @@
 
     <!-- STEP 2: QUIZ VIEW (Hidden initially) -->
     <div id="quiz-view" class="hidden max-w-xl mx-auto px-6 py-8 my-auto w-full transition-all duration-500">
-      <!-- Confirmation Banner -->
       <div class="bg-[#272626] border border-[#272626] p-4 rounded-xl mb-6 text-center text-sm text-[#fefdfd] shadow-lg flex items-center justify-center gap-2">
         <span>🎉</span> <strong>Success! Your 7-Day Guide is on its way to your inbox.</strong>
       </div>
 
-      <!-- Quiz Container -->
       <div class="bg-[#d2858c] border border-[#8f7478]/30 p-6 sm:p-8 rounded-2xl shadow-2xl">
-        <!-- Quiz Header -->
         <div class="text-center mb-6">
           <span class="text-[11px] font-bold text-white/90 uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full">Step 2 of 2</span>
           <h2 class="text-2xl font-extrabold mt-2 text-[#272626]">2-Minute Personalization Quiz</h2>
@@ -150,7 +145,6 @@
           </div>
         </div>
 
-        <!-- Container for Questions -->
         <div id="quiz-container" class="bg-white/10 p-5 rounded-xl border border-white/20 backdrop-blur-xs">
           <h3 id="question-title" class="text-base sm:text-lg font-bold text-[#272626] mb-4"></h3>
           <div id="options-container" class="space-y-3"></div>
@@ -160,17 +154,14 @@
 
     <!-- STEP 3: THANK YOU & QUIZ RESULT PAGE (Hidden initially) -->
     <div id="result-view" class="hidden max-w-xl mx-auto px-6 py-8 text-center my-auto w-full transition-all duration-500">
-      <!-- Result Container -->
       <div class="bg-[#d2858c] border border-[#8f7478]/30 p-6 sm:p-8 rounded-2xl shadow-2xl text-left">
         
-        <!-- Thank You Confirmation Header -->
         <div class="text-center mb-6">
           <span class="bg-[#272626] text-white text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm">Signup Confirmed</span>
           <h1 class="text-2xl sm:text-3xl font-extrabold text-[#272626] mt-3">🎉 Thank You for Joining!</h1>
           <p class="text-white font-bold text-sm mt-1">Your signup was successful!</p>
         </div>
 
-        <!-- What to Expect Next Section -->
         <div class="bg-white/95 p-5 rounded-xl border border-white/50 text-xs text-[#272626] space-y-2 mb-6 shadow-sm">
           <p class="font-bold text-[#272626] text-sm mb-2">What To Expect Next:</p>
           <p class="flex items-start gap-2"><span>1.</span> <span><strong>Check your email inbox</strong> for an email from <em>Sarah Louise Fitness</em> containing your <strong>Customized 7-Day Guide</strong>.</span></p>
@@ -178,7 +169,6 @@
           <p class="flex items-start gap-2"><span>3.</span> <span>Look out for future emails with custom fitness and nutrition advice tailored to your goals!</span></p>
         </div>
 
-        <!-- Personalized Quiz Results -->
         <div class="border-t border-white/40 pt-6">
           <div class="text-center mb-5">
             <span class="text-xs uppercase tracking-widest text-white/90 font-bold bg-black/10 px-3 py-1 rounded-full">Your Quiz Result</span>
@@ -382,7 +372,7 @@
       }
     }
 
-    // Step 4: Display Result & Send Full Payload to Apps Script
+    // Step 4: Display Result & Send Full Payload to Apps Script with explicit UTF-8 encoding
     async function showQuizResult() {
       document.getElementById('quiz-view').classList.add('hidden');
       document.getElementById('result-view').classList.remove('hidden');
@@ -417,7 +407,9 @@
         await fetch(SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
+          headers: { 
+            'Content-Type': 'text/plain;charset=utf-8' 
+          },
           body: JSON.stringify(finalPayload)
         });
       } catch (error) {
