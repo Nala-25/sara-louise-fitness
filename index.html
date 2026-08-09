@@ -5,49 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sarah Louise Fitness - Custom 7-Day Plan & Quiz</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body { 
       font-family: 'Poppins', sans-serif; 
       background-color: #fefdfd;
     }
+    .quiz-option {
+      transition: all 0.2s ease-in-out;
+    }
     .quiz-option:hover { 
       border-color: #272626; 
-      background-color: rgba(255, 255, 255, 0.95); 
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
   </style>
 </head>
-<body class="text-[#272626] min-h-screen flex flex-col justify-between" style="background-color: #fefdfd;">
+<body class="text-[#272626] min-h-screen flex flex-col justify-between antialiased selection:bg-[#d2858c] selection:text-white">
 
-  <!-- Header with Google Drive Logo Image -->
-  <header class="p-6 text-center border-b border-[#8f7478]/20 bg-[#fefdfd]">
+  <!-- Header with Brand Logo -->
+  <header class="py-5 px-6 text-center border-b border-[#8f7478]/15 bg-[#fefdfd] sticky top-0 z-50 backdrop-blur-md bg-white/80">
     <div class="flex flex-col items-center justify-center max-w-xl mx-auto">
       <img 
         src="https://lh3.googleusercontent.com/d/15VIHy6EnrPGrt61dwak1kspj_KOhkhwg" 
-        alt="Sara Louise Fitness Logo" 
-        class="h-28 md:h-36 w-auto object-contain mx-auto"
+        alt="Sarah Louise Fitness Logo" 
+        class="h-20 md:h-28 w-auto object-contain mx-auto hover:opacity-95 transition"
       />
     </div>
   </header>
 
-  <!-- MAIN CONTENT WRAPPER WITH GRAY BACKGROUND -->
-  <main class="bg-gray-100 flex-1 flex flex-col justify-center">
+  <!-- MAIN CONTENT WRAPPER -->
+  <main class="bg-gradient-to-b from-gray-50 to-gray-100 flex-1 flex flex-col justify-center py-8">
 
-    <!-- STEP 1: LANDING PAGE LEAD FORM (WITH QUIZ ANGLE) -->
-    <div id="lead-view" class="max-w-6xl mx-auto px-6 py-12 my-auto">
+    <!-- STEP 1: LANDING PAGE LEAD FORM -->
+    <div id="lead-view" class="max-w-6xl mx-auto px-6 py-8 my-auto w-full transition-all duration-500">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
         <!-- Left Column: Copy & Form -->
         <div class="text-center lg:text-left">
           
           <!-- Quiz Eyebrow Tag -->
-          <div class="inline-block bg-[#d2858c]/20 text-[#272626] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-[#d2858c]/30">
-            ⚡ 2-Minute Personalization Quiz
+          <div class="inline-flex items-center gap-1.5 bg-[#d2858c]/20 text-[#272626] text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-5 border border-[#d2858c]/30 shadow-sm">
+            <span>⚡</span> 2-Minute Personalization Quiz
           </div>
 
           <!-- Main Heading -->
-          <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight text-[#272626]">
-            Transform Your Body With a <span class="text-[#8f7478]">100% Tailored</span> Plan
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 leading-tight text-[#272626]">
+            Transform Your Body With a <span class="text-[#8f7478] relative inline-block underline decoration-[#d2858c]/40 underline-offset-4">100% Tailored</span> Plan
           </h1>
           
           <!-- Subheadline -->
@@ -56,47 +60,50 @@
           </p>
 
           <!-- Quiz Highlights Bullet List -->
-          <ul class="text-left space-y-2 mb-8 text-sm font-semibold text-[#272626]/90 max-w-md mx-auto lg:mx-0">
-            <li class="flex items-center space-x-2">
-              <span class="text-base">⏱️</span>
+          <ul class="text-left space-y-3 mb-8 text-sm font-medium text-[#272626]/90 max-w-md mx-auto lg:mx-0 bg-white/60 p-4 rounded-xl border border-gray-200/60 shadow-sm">
+            <li class="flex items-center space-x-3">
+              <span class="text-base bg-white p-1 rounded-md shadow-xs">⏱️</span>
               <span><strong>Fast:</strong> Takes only 2 minutes (7 simple questions)</span>
             </li>
-            <li class="flex items-center space-x-2">
-              <span class="text-base">🎯</span>
+            <li class="flex items-center space-x-3">
+              <span class="text-base bg-white p-1 rounded-md shadow-xs">🎯</span>
               <span><strong>Targeted:</strong> Adapted to your fitness level & goals</span>
             </li>
-            <li class="flex items-center space-x-2">
-              <span class="text-base">🥗</span>
+            <li class="flex items-center space-x-3">
+              <span class="text-base bg-white p-1 rounded-md shadow-xs">🥗</span>
               <span><strong>Complete:</strong> Custom workouts + quick meal prep ideas</span>
             </li>
           </ul>
 
-          <!-- Form Container (#d2858c) -->
-          <form id="leadForm" onsubmit="handleLeadSubmit(event)" class="space-y-4 bg-[#d2858c] p-8 rounded-2xl border border-[#8f7478]/30 shadow-2xl">
+          <!-- Form Container -->
+          <form id="leadForm" onsubmit="handleLeadSubmit(event)" class="space-y-4 bg-[#d2858c] p-6 sm:p-8 rounded-2xl border border-[#8f7478]/30 shadow-2xl">
             <div>
               <input type="text" id="name" placeholder="First Name" required 
-                class="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#272626] focus:outline-none text-[#272626] placeholder-gray-500 transition">
+                class="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#272626] focus:outline-none text-[#272626] placeholder-gray-400 font-medium transition shadow-inner">
             </div>
             <div>
               <input type="email" id="email" placeholder="Email Address" required 
-                class="w-full px-4 py-3.5 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#272626] focus:outline-none text-[#272626] placeholder-gray-500 transition">
+                class="w-full px-4 py-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#272626] focus:outline-none text-[#272626] placeholder-gray-400 font-medium transition shadow-inner">
             </div>
             <button type="submit" id="submitBtn" 
-              class="w-full bg-[#272626] hover:bg-[#3d3a3a] text-white font-bold py-4 rounded-xl transition duration-200 transform active:scale-95 shadow-lg shadow-[#272626]/20 uppercase tracking-wide">
+              class="w-full bg-[#272626] hover:bg-[#3d3a3a] text-white font-bold py-4 rounded-xl transition duration-200 transform active:scale-[0.98] shadow-lg shadow-[#272626]/20 uppercase tracking-wide text-sm sm:text-base">
               TAKE THE 2-MIN QUIZ & GET MY PLAN →
             </button>
           </form>
           
-          <p class="text-xs text-[#272626]/70 mt-4 font-medium">🔒 100% free. Takes 2 minutes. No credit card required.</p>
+          <p class="text-xs text-[#272626]/70 mt-4 font-medium flex items-center justify-center lg:justify-start gap-1">
+            <span>🔒</span> 100% free. Takes 2 minutes. No credit card required.
+          </p>
         </div>
 
         <!-- Right Column: Hero Image -->
         <div class="flex justify-center items-center">
           <div class="relative w-full max-w-md lg:max-w-full">
+            <div class="absolute -inset-1 bg-gradient-to-r from-[#d2858c] to-[#8f7478] rounded-3xl blur opacity-25"></div>
             <img 
               src="https://lh3.googleusercontent.com/d/1YZxfu2vB7bf-f4uSABmwDYcJJQS87HAA" 
               alt="Sarah Louise Fitness Program Preview" 
-              class="w-full h-auto object-cover rounded-3xl shadow-xl border border-[#8f7478]/30"
+              class="relative w-full h-auto object-cover rounded-3xl shadow-2xl border border-[#8f7478]/30"
             />
           </div>
         </div>
@@ -105,96 +112,96 @@
     </div>
 
     <!-- STEP 2: QUIZ VIEW (Hidden initially) -->
-    <div id="quiz-view" class="hidden max-w-xl mx-auto px-6 py-12 my-auto w-full">
+    <div id="quiz-view" class="hidden max-w-xl mx-auto px-6 py-8 my-auto w-full transition-all duration-500">
       <!-- Confirmation Banner -->
-      <div class="bg-[#272626] border border-[#272626] p-4 rounded-xl mb-6 text-center text-sm text-[#fefdfd] shadow-lg">
-        🎉 <strong>Success! Your 7-Day Guide is on its way to your inbox.</strong>
+      <div class="bg-[#272626] border border-[#272626] p-4 rounded-xl mb-6 text-center text-sm text-[#fefdfd] shadow-lg flex items-center justify-center gap-2">
+        <span>🎉</span> <strong>Success! Your 7-Day Guide is on its way to your inbox.</strong>
       </div>
 
-      <!-- Quiz Container (#d2858c) -->
-      <div class="bg-[#d2858c] border border-[#8f7478]/30 p-8 rounded-2xl shadow-2xl">
+      <!-- Quiz Container -->
+      <div class="bg-[#d2858c] border border-[#8f7478]/30 p-6 sm:p-8 rounded-2xl shadow-2xl">
         <!-- Quiz Header -->
         <div class="text-center mb-6">
-          <span class="text-xs font-semibold text-white/90 uppercase tracking-widest">Step 2 of 2</span>
-          <h2 class="text-2xl font-bold mt-1 text-[#272626]">2-Minute Personalization Quiz</h2>
-          <p class="text-[#272626]/80 text-xs mt-1">Answer a few quick questions to match with your tailored plan.</p>
-          <div class="w-full bg-white/40 h-2 rounded-full mt-4 border border-[#8f7478]/30">
-            <div id="progress-bar" class="bg-[#272626] h-2 rounded-full transition-all duration-300" style="width: 14%;"></div>
+          <span class="text-[11px] font-bold text-white/90 uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full">Step 2 of 2</span>
+          <h2 class="text-2xl font-extrabold mt-2 text-[#272626]">2-Minute Personalization Quiz</h2>
+          <p class="text-[#272626]/80 text-xs mt-1 font-medium">Answer a few quick questions to match with your tailored plan.</p>
+          <div class="w-full bg-white/30 h-2.5 rounded-full mt-4 border border-[#8f7478]/20 overflow-hidden">
+            <div id="progress-bar" class="bg-[#272626] h-full rounded-full transition-all duration-300" style="width: 14%;"></div>
           </div>
         </div>
 
         <!-- Container for Questions -->
-        <div id="quiz-container">
-          <h3 id="question-title" class="text-lg font-semibold text-[#272626] mb-4"></h3>
+        <div id="quiz-container" class="bg-white/10 p-5 rounded-xl border border-white/20 backdrop-blur-xs">
+          <h3 id="question-title" class="text-base sm:text-lg font-bold text-[#272626] mb-4"></h3>
           <div id="options-container" class="space-y-3"></div>
         </div>
       </div>
     </div>
 
     <!-- STEP 3: THANK YOU & QUIZ RESULT PAGE (Hidden initially) -->
-    <div id="result-view" class="hidden max-w-xl mx-auto px-6 py-12 text-center my-auto w-full">
-      <!-- Result Container (#d2858c) -->
-      <div class="bg-[#d2858c] border border-[#8f7478]/30 p-8 rounded-2xl shadow-2xl text-left">
+    <div id="result-view" class="hidden max-w-xl mx-auto px-6 py-8 text-center my-auto w-full transition-all duration-500">
+      <!-- Result Container -->
+      <div class="bg-[#d2858c] border border-[#8f7478]/30 p-6 sm:p-8 rounded-2xl shadow-2xl text-left">
         
         <!-- Thank You Confirmation Header -->
         <div class="text-center mb-6">
           <span class="bg-[#272626] text-white text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm">Signup Confirmed</span>
-          <h1 class="text-3xl font-extrabold text-[#272626] mt-3">🎉 Thank You for Joining!</h1>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-[#272626] mt-3">🎉 Thank You for Joining!</h1>
           <p class="text-white font-bold text-sm mt-1">Your signup was successful!</p>
         </div>
 
         <!-- What to Expect Next Section -->
-        <div class="bg-white/90 p-5 rounded-xl border border-white/50 text-xs text-[#272626] space-y-2 mb-6 shadow-sm">
-          <p class="font-bold text-[#272626] text-sm">What To Expect Next:</p>
-          <p>1. <strong>Check your email inbox</strong> for an email from <em>Sarah Louise Fitness</em> containing your <strong>Customized 7-Day Guide</strong>.</p>
-          <p>2. <strong>Check Spam/Promotions:</strong> If you don't see it within 5 minutes, please check your spam or promotions tab.</p>
-          <p>3. Look out for future emails with custom fitness and nutrition advice tailored to your goals!</p>
+        <div class="bg-white/95 p-5 rounded-xl border border-white/50 text-xs text-[#272626] space-y-2 mb-6 shadow-sm">
+          <p class="font-bold text-[#272626] text-sm mb-2">What To Expect Next:</p>
+          <p class="flex items-start gap-2"><span>1.</span> <span><strong>Check your email inbox</strong> for an email from <em>Sarah Louise Fitness</em> containing your <strong>Customized 7-Day Guide</strong>.</span></p>
+          <p class="flex items-start gap-2"><span>2.</span> <span><strong>Check Spam/Promotions:</strong> If you don't see it within 5 minutes, please check your spam or promotions tab.</span></p>
+          <p class="flex items-start gap-2"><span>3.</span> <span>Look out for future emails with custom fitness and nutrition advice tailored to your goals!</span></p>
         </div>
 
         <!-- Personalized Quiz Results -->
         <div class="border-t border-white/40 pt-6">
-          <div class="text-center mb-4">
-            <span class="text-xs uppercase tracking-widest text-white/90 font-semibold">Your Quiz Result</span>
-            <h2 id="result-title" class="text-2xl font-bold text-[#272626] mt-1"></h2>
-            <p id="result-subtitle" class="text-[#272626]/80 font-medium italic text-xs mt-0.5"></p>
+          <div class="text-center mb-5">
+            <span class="text-xs uppercase tracking-widest text-white/90 font-bold bg-black/10 px-3 py-1 rounded-full">Your Quiz Result</span>
+            <h2 id="result-title" class="text-2xl font-extrabold text-[#272626] mt-2"></h2>
+            <p id="result-subtitle" class="text-[#272626]/90 font-medium italic text-xs mt-1"></p>
           </div>
 
-          <div class="space-y-4 bg-white/90 p-6 rounded-xl border border-white/50 text-sm text-[#272626] mb-6 shadow-sm">
+          <div class="space-y-4 bg-white/95 p-6 rounded-xl border border-white/50 text-sm text-[#272626] mb-6 shadow-sm">
             <div>
               <p class="font-bold text-[#8f7478] uppercase text-xs tracking-wider">You probably...</p>
-              <ul id="result-traits" class="list-disc list-inside space-y-1 mt-1 text-[#272626]"></ul>
+              <ul id="result-traits" class="list-disc list-inside space-y-1 mt-1.5 text-[#272626] font-medium"></ul>
             </div>
             
-            <div class="pt-2 border-t border-gray-200">
+            <div class="pt-3 border-t border-gray-200">
               <p class="font-bold text-rose-700 uppercase text-xs tracking-wider">Your Biggest Obstacle:</p>
-              <p id="result-obstacle" class="font-semibold text-[#272626] mt-0.5"></p>
+              <p id="result-obstacle" class="font-bold text-[#272626] mt-0.5"></p>
             </div>
 
-            <div class="pt-2 border-t border-gray-200">
+            <div class="pt-3 border-t border-gray-200">
               <p class="font-bold text-[#8f7478] uppercase text-xs tracking-wider">What You Need:</p>
-              <ul id="result-needs" class="list-disc list-inside space-y-1 mt-1 text-[#272626]"></ul>
+              <ul id="result-needs" class="list-disc list-inside space-y-1 mt-1.5 text-[#272626] font-medium"></ul>
             </div>
           </div>
         </div>
 
-        <a href="#" onclick="location.reload()" class="block text-center text-xs text-[#272626] font-semibold hover:underline mt-2">← Return to Main Page</a>
+        <a href="#" onclick="location.reload()" class="block text-center text-xs text-[#272626] font-bold hover:underline mt-2">← Return to Main Page</a>
       </div>
     </div>
 
   </main>
 
   <!-- Footer -->
-  <footer class="p-6 text-center text-xs text-[#272626]/60 border-t border-[#8f7478]/20 bg-[#fefdfd]">
+  <footer class="py-6 px-6 text-center text-xs text-[#272626]/60 border-t border-[#8f7478]/15 bg-[#fefdfd]">
     © 2026 Sarah Louise Fitness. All rights reserved.
   </footer>
 
-  <!-- Quiz & Form Submission Script -->
+  <!-- JavaScript Logic -->
   <script>
-    // Web App URL for Google Apps Script
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwquDcebN0xViAMcr1IstGOc2b_bfASKRZHcHy2o0ImyF-PsbiqDG8_-cXZRTmxzf4v/exec';
 
     let currentQuestion = 0;
     let userAnswers = [];
+    let leadDetails = {};
 
     const questions = [
       {
@@ -305,41 +312,25 @@
       }
     };
 
-    // Standard HTTP fetch submission replacing google.script.run
+    // Step 1: Lead Capture Submit
     async function handleLeadSubmit(e) {
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
       btn.innerText = "STARTING QUIZ...";
       btn.disabled = true;
 
-      const formData = {
+      leadDetails = {
         name: document.getElementById('name').value,
         email: document.getElementById('email').value
       };
 
-      try {
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors', // Bypasses browser CORS preflight restrictions
-          headers: {
-            'Content-Type': 'text/plain'
-          },
-          body: JSON.stringify(formData)
-        });
-
-        // Hide Lead Form & Reveal Quiz
-        document.getElementById('lead-view').classList.add('hidden');
-        document.getElementById('quiz-view').classList.remove('hidden');
-        loadQuestion();
-
-      } catch (error) {
-        console.error("Submission error:", error);
-        alert('There was a problem submitting your details. Please try again!');
-        btn.innerText = "TAKE THE 2-MIN QUIZ & GET MY PLAN →";
-        btn.disabled = false;
-      }
+      // Transition to Quiz View
+      document.getElementById('lead-view').classList.add('hidden');
+      document.getElementById('quiz-view').classList.remove('hidden');
+      loadQuestion();
     }
 
+    // Step 2: Render Quiz Questions
     function loadQuestion() {
       const q = questions[currentQuestion];
       document.getElementById('question-title').innerText = q.title;
@@ -349,7 +340,7 @@
 
       q.options.forEach((optionText, index) => {
         const btn = document.createElement('button');
-        btn.className = "quiz-option w-full text-left p-4 rounded-xl border border-gray-200 bg-white text-[#272626] transition text-sm flex items-center space-x-3 shadow-sm";
+        btn.className = "quiz-option w-full text-left p-4 rounded-xl border border-gray-200 bg-white text-[#272626] font-medium text-sm flex items-center space-x-3 shadow-xs cursor-pointer";
         btn.innerHTML = `<span class="w-4 h-4 rounded-full border border-gray-400 flex-shrink-0"></span><span>${optionText}</span>`;
         btn.onclick = () => selectOption(index);
         optionsContainer.appendChild(btn);
@@ -359,6 +350,7 @@
       document.getElementById('progress-bar').style.width = `${progressPercent}%`;
     }
 
+    // Step 3: Handle Option Selection
     function selectOption(optionIndex) {
       userAnswers.push(optionIndex);
       currentQuestion++;
@@ -370,7 +362,8 @@
       }
     }
 
-    function showQuizResult() {
+    // Step 4: Display Result & Send Full Payload to Apps Script
+    async function showQuizResult() {
       document.getElementById('quiz-view').classList.add('hidden');
       document.getElementById('result-view').classList.remove('hidden');
 
@@ -385,12 +378,31 @@
 
       const res = personalityResults[resultKey];
 
+      // Populate UI Result elements
       document.getElementById('result-title').innerText = res.title;
       document.getElementById('result-subtitle').innerText = res.subtitle;
       document.getElementById('result-obstacle').innerText = res.obstacle;
 
       document.getElementById('result-traits').innerHTML = res.traits.map(t => `<li>${t}</li>`).join('');
       document.getElementById('result-needs').innerHTML = res.needs.map(n => `<li>${n}</li>`).join('');
+
+      // Send payload with Quiz Result back to Google Apps Script
+      const finalPayload = {
+        name: leadDetails.name,
+        email: leadDetails.email,
+        quizResult: res.title
+      };
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(finalPayload)
+        });
+      } catch (error) {
+        console.error("Error logging result:", error);
+      }
     }
   </script>
 </body>
